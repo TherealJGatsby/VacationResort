@@ -1,14 +1,11 @@
 window.onload = function() {
     // gathering personal details
     const form = document.getElementById("form");
-    form.onsubmit = getForm;
+    form.onsubmit = getRoomRate;
 }
 
-function getForm(event) {
+function getRoomRate(event) {
     event.preventDefault();
-
-    // console.log(event);
-    // console.log("form submitted");
 
     // get My details and event details
     let firstName = document.getElementById("firstName").value.trim();
@@ -22,29 +19,6 @@ function getForm(event) {
     let sizeKing = document.getElementById("king");
     let sizeSuite = document.getElementById("suite");
 
-    // Room rate 
-    let roomRate = 0;
-
-    if(sizeQueen.checked) {
-        roomRate = 150.00;
-    } else if(sizeKing.checked) {
-        roomRate = 150.00;
-    } else {
-        roomRate = 210.00;
-    }
-
-    let cost = roomRate * numberOfNights;
-
-    // console.log(cost);
-
-
-
-    // console.log("firstName",firstName);
-    // console.log("email",email);
-    // console.log("phoneNumber",phoneNumber);
-    // console.log("numberOfNights",numberOfNights);
-    // console.log("checkInDate",checkInDate);
-
     // grab room rate
     // grab discount
     // grab number of nights
@@ -52,26 +26,43 @@ function getForm(event) {
     // calculate discounted room cost
     // total cost.
 
-
-     // If discount applied
-     let discount = 0;
-
-     const militaryDiscountRadio = document.getElementById("militaryDiscount");
-     const seniorDiscountRadio = document.getElementById("seniorDiscount");
-     const noDiscountRadio = document.getElementById("noDiscount");
+    // Room rate 
+    let roomRate = 0;
+    // If discount applied
+    let discount = 0;
+    // total  cost before discount is applied
+    let cost = roomRate * numberOfNights;
+    // checks what radio got selected for the room size
+    if(sizeQueen.checked) {
+        roomRate = 150.00;
+    } else if(sizeKing.checked) {
+        roomRate = 150.00;
+    } else {
+        roomRate = 210.00;
+    }
+    // checks which discount was applied to the event planner
+    const militaryDiscountRadio = document.getElementById("militaryDiscount");
+    const seniorDiscountRadio = document.getElementById("seniorDiscount");
+    const noDiscountRadio = document.getElementById("noDiscount");
  
-     if (militaryDiscountRadio.checked) {
+    if (militaryDiscountRadio.checked) {
          discount = cost * .2;
-     } else if (seniorDiscountRadio.checked) {
+    } else if (seniorDiscountRadio.checked) {
          discount = cost * .1;
-     }
+    }
 
-     let newCost = cost - discount;
+    let newCost = cost - discount;
 
-     console.log(cost);
-     console.log(discount);
-     console.log(newCost);
-
+    console.log(event);
+    console.log("form submitted");
+    console.log("firstName",firstName);
+    console.log("email",email);
+    console.log("phoneNumber",phoneNumber);
+    console.log("numberOfNights",numberOfNights);
+    console.log("checkInDate",checkInDate);
+    console.log(cost);
+    console.log(discount);
+    console.log(newCost);
 }
 
 
